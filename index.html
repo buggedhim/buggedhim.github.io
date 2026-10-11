@@ -38,7 +38,7 @@
             margin-bottom: 60px;
         }
 
-        h1 {
+        header h1 {
             font-size: 3.5rem;
             font-weight: 900;
             margin: 0 0 12px 0;
@@ -92,20 +92,6 @@
             overflow: hidden;
         }
 
-        .pc-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            padding: 1px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-
         .pc-card:hover {
             transform: translateY(-8px);
             border-color: rgba(56, 189, 248, 0.3);
@@ -134,7 +120,6 @@
             padding: 8px 18px;
             border-radius: 99px;
             border: 1px solid rgba(56, 189, 248, 0.2);
-            box-shadow: inset 0 0 12px rgba(56, 189, 248, 0.1);
         }
 
         .specs-list {
@@ -183,7 +168,6 @@
         }
 
         .action-btn:hover {
-            opacity: 0.95;
             transform: scale(1.02);
             box-shadow: 0 4px 25px rgba(192, 132, 252, 0.4);
         }
@@ -200,9 +184,8 @@
             width: 100%;
             box-sizing: border-box;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-            margin-top: 20px;
         }
 
         .tier-row {
@@ -213,12 +196,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .tier-row:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.08);
         }
 
         .tier-badge {
@@ -230,12 +207,11 @@
             align-items: center;
             justify-content: center;
             border-radius: 14px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
         }
 
         .tier-badge.a { background: linear-gradient(135deg, #ef4444, #f97316); color: #fff; }
-        .tier-badge.b { background: linear-gradient(135deg, #eab308, #3b82f6); color: #fff; }
-        .tier-badge.c { background: linear-gradient(135deg, #22c55e, #06b6d4); color: #fff; }
+        .tier-badge.b { background: linear-gradient(135deg, #3b82f6, #06b6d4); color: #fff; }
+        .tier-badge.c { background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; }
 
         .tier-info h4 {
             margin: 0 0 4px 0;
@@ -280,19 +256,20 @@
             width: 90%;
             text-align: center;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: scale(1);
         }
 
         .modal-title {
             font-size: 1.6rem;
             font-weight: 800;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        .modal-price {
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .status-box {
@@ -312,12 +289,24 @@
         .status-success {
             color: #22c55e !important;
             font-weight: 800;
+            line-height: 1.6;
         }
 
         .modal-btn-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
+        }
+
+        .pay-btn {
+            background: var(--gradient-primary);
+            color: #020617;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
         }
 
         .close-btn {
@@ -340,3 +329,19 @@
 <body>
 
     <header>
+        <h1>Mbyte pc's</h1>
+        <p class="subtitle">Next-gen custom gaming rigs built to dominate</p>
+    </header>
+
+    <main class="pc-grid">
+        <!-- PC 1: X1 -->
+        <div class="pc-card">
+            <div>
+                <div class="card-header">
+                    <h2 class="pc-title">x1 tier: A</h2>
+                    <span class="pc-price">€ 1.000,-</span>
+                </div>
+                <ul class="specs-list">
+                    <li>
+                        <span class="spec-label">Processor</span>
+                        <span class="spec-value">AMD Ryzen 5 5500 (6 Cores)</span>
