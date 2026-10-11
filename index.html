@@ -5,343 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mbyte pc's</title>
     <style>
-        :root {
-            --bg-color: #020617;
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --border-color: rgba(255, 255, 255, 0.05);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-cyan: #38bdf8;
-            --accent-purple: #c084fc;
-            --gradient-primary: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
-            --glow-cyan: rgba(56, 189, 248, 0.15);
-        }
-
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
             margin: 0;
-            padding: 60px 20px;
-            min-height: 100vh;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 85% 85%, rgba(192, 132, 252, 0.12) 0%, transparent 50%);
-            background-attachment: fixed;
+            justify-content: center;
+            min-height: 100vh;
         }
-
-        header {
+        .container {
             text-align: center;
-            margin-bottom: 60px;
+            max-width: 600px;
+            width: 90%;
+            background: #1e293b;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+            margin: 20px;
         }
-
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin: 0 0 12px 0;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
-            text-transform: uppercase;
+        h1 {
+            color: #38bdf8;
+            margin-top: 0;
+            font-size: 2.5rem;
         }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
+        .intro {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 50px 0 25px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #fff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            width: 100%;
-            max-width: 940px;
+        .product-card {
+            background: #0f172a;
+            border: 1px solid #38bdf8;
+            border-radius: 8px;
+            padding: 1.5rem;
             text-align: left;
         }
-
-        .pc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-            max-width: 940px;
-            width: 100%;
+        .product-card h2 {
+            color: #38bdf8;
+            margin-top: 0;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.5rem;
         }
-
-        .pc-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pc-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--glow-cyan);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .pc-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-
-        .pc-price {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.1);
-            padding: 8px 18px;
-            border-radius: 99px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
         .specs-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 35px 0;
+            margin: 0;
         }
-
         .specs-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1e293b;
             display: flex;
-            flex-direction: column;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            justify-content: space-between;
         }
-
         .specs-list li:last-child {
             border-bottom: none;
         }
-
         .spec-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            font-weight: bold;
+            color: #94a3b8;
         }
-
         .spec-value {
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-
-        .action-btn {
-            background: var(--gradient-primary);
-            color: #020617;
-            border: none;
-            padding: 16px;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
-        }
-
-        .action-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 25px rgba(192, 132, 252, 0.4);
-        }
-
-        /* Tiers Dashboard */
-        .tiers-panel {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 35px;
-            max-width: 940px;
-            width: 100%;
-            box-sizing: border-box;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .tier-row {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .tier-badge {
-            font-size: 1.8rem;
-            font-weight: 900;
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-        }
-
-        .tier-badge.a { background: linear-gradient(135deg, #ef4444, #f97316); color: #fff; }
-        .tier-badge.b { background: linear-gradient(135deg, #3b82f6, #06b6d4); color: #fff; }
-        .tier-badge.c { background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; }
-
-        .tier-info h4 {
-            margin: 0 0 4px 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .tier-info p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Test Betaal Systeem Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
-            background: #0f172a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 440px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-
-        .modal-price {
-            font-size: 1.3rem;
-            color: var(--accent-cyan);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .status-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-
-        .status-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .status-success {
-            color: #22c55e !important;
-            font-weight: 800;
-            line-height: 1.6;
-        }
-
-        .modal-btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .pay-btn {
-            background: var(--gradient-primary);
-            color: #020617;
-            border: none;
-            padding: 16px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .close-btn {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 14px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            color: #f8fafc;
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <div class="container">
         <h1>Mbyte pc's</h1>
-        <p class="subtitle">Next-gen custom gaming rigs built to dominate</p>
-    </header>
+        <p class="intro">Ontdek onze krachtige en zorgvuldig samengestelde systemen.</p>
 
-    <main class="pc-grid">
-        <!-- PC 1: X1 -->
-        <div class="pc-card">
-            <div>
-                <div class="card-header">
-                    <h2 class="pc-title">x1 tier: A</h2>
-                    <span class="pc-price">€ 1.000,-</span>
-                </div>
-                <ul class="specs-list">
-                    <li>
-                        <span class="spec-label">Processor</span>
-                        <span class="spec-value">AMD Ryzen 5 5500 (6 Cores)</span>
+        <div class="product-card">
+            <h2>Gaming PC X1</h2>
+            <ul class="specs-list">
+                <li><span class="spec-label">Processor (CPU):</span> <span class="spec-value">AMD Ryzen 5 5500 (6 Cores / 12 Threads)</span></li>
+                <li><span class="spec-label">Werkgeheugen (RAM):</span> <span class="spec-value">16GB DDR4 3200MHz (2x 8GB Kit)</span></li>
+                <li><span class="spec-label">Videokaart (GPU):</span> <span class="spec-value">NVIDIA GeForce RTX 3060 12GB / AMD RX 6600</span></li>
+                <li><span class="spec-label">Moederbord:</span> <span class="spec-value">B450 / B550 (Socket AM4)</span></li>
+                <li><span class="spec-label">Opslag (SSD):</span> <span class="spec-value">1TB NVMe M.2 PCIe SSD</span></li>
+                <li><span class="spec-label">Voeding (PSU):</span> <span class="spec-value">550W 80+ Bronze</span></li>
+                <li><span class="spec-label">Behuizing:</span> <span class="spec-value">ATX Mid-Tower met RGB verlichting</span></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
