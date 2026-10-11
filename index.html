@@ -3,54 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijn GitHub Test Website</title>
+    <title>Mbyte pc's</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f6f8fa;
-            color: #24292f;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
         .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 1px solid #d0d7de;
             text-align: center;
-            max-width: 400px;
+            max-width: 600px;
+            width: 90%;
+            background: #1e293b;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+            margin: 20px;
         }
         h1 {
-            color: #0969da;
+            color: #38bdf8;
             margin-top: 0;
+            font-size: 2.5rem;
         }
-        p {
-            font-size: 16px;
-            line-height: 1.5;
+        .intro {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
-        .status-badge {
-            display: inline-block;
-            background-color: #dafbe1;
-            color: #1a7f37;
-            padding: 6px 12px;
-            border-radius: 20px;
+        .product-card {
+            background: #0f172a;
+            border: 1px solid #38bdf8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+        .product-card h2 {
+            color: #38bdf8;
+            margin-top: 0;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 0.5rem;
+        }
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .specs-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+        }
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        .spec-label {
             font-weight: bold;
-            font-size: 14px;
-            margin-top: 15px;
+            color: #94a3b8;
+        }
+        .spec-value {
+            color: #f8fafc;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>🚀 Succes!</h1>
-        <p>Je test website staat live op GitHub Pages.</p>
-        <p>Als je dit kunt zien, werkt je repository naar behoren.</p>
-        <span class="status-badge">Status: Online</span>
+        <h1>Mbyte pc's</h1>
+        <p class="intro">Ontdek onze krachtige en zorgvuldig samengestelde systemen.</p>
+
+        <div class="product-card">
+            <h2>Gaming PC X1</h2>
+            <ul class="specs-list">
+                <li><span class="spec-label">Processor (CPU):</span> <span class="spec-value">AMD Ryzen 5 5500 (6 Cores / 12 Threads)</span></li>
+                <li><span class="spec-label">Werkgeheugen (RAM):</span> <span class="spec-value">16GB DDR4 3200MHz (2x 8GB Kit)</span></li>
+                <li><span class="spec-label">Videokaart (GPU):</span> <span class="spec-value">NVIDIA GeForce RTX 3060 12GB / AMD RX 6600</span></li>
+                <li><span class="spec-label">Moederbord:</span> <span class="spec-value">B450 / B550 (Socket AM4)</span></li>
+                <li><span class="spec-label">Opslag (SSD):</span> <span class="spec-value">1TB NVMe M.2 PCIe SSD</span></li>
+                <li><span class="spec-label">Voeding (PSU):</span> <span class="spec-value">550W 80+ Bronze</span></li>
+                <li><span class="spec-label">Behuizing:</span> <span class="spec-value">ATX Mid-Tower met RGB verlichting</span></li>
+            </ul>
+        </div>
     </div>
 
 </body>
