@@ -5,94 +5,240 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mbyte pc's</title>
     <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #a855f7;
+            --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
         }
-        .container {
+
+        header {
             text-align: center;
-            max-width: 600px;
-            width: 90%;
-            background: #1e293b;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border: 1px solid #334155;
-            margin: 20px;
+            margin-bottom: 50px;
         }
+
         h1 {
-            color: #38bdf8;
-            margin-top: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
-        .intro {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
         }
-        .product-card {
-            background: #0f172a;
-            border: 1px solid #38bdf8;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: left;
+
+        .pc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            width: 100%;
         }
-        .product-card h2 {
-            color: #38bdf8;
-            margin-top: 0;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 0.5rem;
+
+        .pc-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        .pc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0.7;
+        }
+
+        .pc-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(6, 182, 212, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .pc-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pc-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
         .specs-list {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 30px 0;
         }
+
         .specs-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #1e293b;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .specs-list li:last-child {
             border-bottom: none;
         }
+
         .spec-label {
-            font-weight: bold;
-            color: #94a3b8;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
         }
+
         .spec-value {
-            color: #f8fafc;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .order-btn {
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .order-btn:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <header>
         <h1>Mbyte pc's</h1>
-        <p class="intro">Ontdek onze krachtige en zorgvuldig samengestelde systemen.</p>
+        <p class="subtitle">Next-level gaming systemen, klaar voor de strijd</p>
+    </header>
 
-        <div class="product-card">
-            <h2>Gaming PC X1</h2>
-            <ul class="specs-list">
-                <li><span class="spec-label">Processor (CPU):</span> <span class="spec-value">AMD Ryzen 5 5500 (6 Cores / 12 Threads)</span></li>
-                <li><span class="spec-label">Werkgeheugen (RAM):</span> <span class="spec-value">16GB DDR4 3200MHz (2x 8GB Kit)</span></li>
-                <li><span class="spec-label">Videokaart (GPU):</span> <span class="spec-value">NVIDIA GeForce RTX 3060 12GB / AMD RX 6600</span></li>
-                <li><span class="spec-label">Moederbord:</span> <span class="spec-value">B450 / B550 (Socket AM4)</span></li>
-                <li><span class="spec-label">Opslag (SSD):</span> <span class="spec-value">1TB NVMe M.2 PCIe SSD</span></li>
-                <li><span class="spec-label">Voeding (PSU):</span> <span class="spec-value">550W 80+ Bronze</span></li>
-                <li><span class="spec-label">Behuizing:</span> <span class="spec-value">ATX Mid-Tower met RGB verlichting</span></li>
-            </ul>
+    <main class="pc-grid">
+        <!-- PC 1: X1 -->
+        <div class="pc-card">
+            <div>
+                <div class="card-header">
+                    <h2 class="pc-title">x1 tier: A</h2>
+                    <span class="pc-price">€ 1.000,-</span>
+                </div>
+                <ul class="specs-list">
+                    <li>
+                        <span class="spec-label">Processor</span>
+                        <span class="spec-value">AMD Ryzen 5 5500 (6 Cores)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Videokaart</span>
+                        <span class="spec-value">NVIDIA GeForce RTX 4060 8GB</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Geheugen</span>
+                        <span class="spec-value">16GB DDR4 RAM Kit (2x 8GB)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Opslag</span>
+                        <span class="spec-value">1TB NVMe M.2 High-Speed SSD</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Behuizing</span>
+                        <span class="spec-value">Premium RGB Mid-Tower (Glass)</span>
+                    </li>
+                </ul>
+            </div>
+            <button class="order-btn">Configureer Nu</button>
         </div>
-    </div>
+
+        <!-- PC 2: L1 -->
+        <div class="pc-card">
+            <div>
+                <div class="card-header">
+                    <h2 class="pc-title">l1 tier: A</h2>
+                    <span class="pc-price">€ 1.000,-</span>
+                </div>
+                <ul class="specs-list">
+                    <li>
+                        <span class="spec-label">Processor</span>
+                        <span class="spec-value">Intel Core i5-12400F (6 Cores)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Videokaart</span>
+                        <span class="spec-value">AMD Radeon RX 7600 XT 16GB</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Geheugen</span>
+                        <span class="spec-value">16GB DDR4 RAM Kit (2x 8GB)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Opslag</span>
+                        <span class="spec-value">1TB NVMe M.2 High-Speed SSD</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Behuizing</span>
+                        <span class="spec-value">Premium RGB Mid-Tower (Glass)</span>
+                    </li>
+                </ul>
+            </div>
+            <button class="order-btn">Configureer Nu</button>
+        </div>
+    </main>
 
 </body>
 </html>
