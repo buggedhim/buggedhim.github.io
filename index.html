@@ -163,6 +163,10 @@
             color: var(--text-muted);
         }
 
+        .clips-section strong {
+            color: var(--text-main);
+        }
+
         .action-btn {
             background: var(--gradient-primary);
             color: #020617;
@@ -317,6 +321,12 @@
             cursor: pointer;
             font-weight: 700;
             font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .pay-btn:hover {
+            transform: scale(1.02);
         }
 
         .close-btn {
@@ -340,11 +350,3 @@
 
     <header>
         <h1>Mbyte pure pc Building</h1>
-        <p class="subtitle">Upload clips, Building pc's</p>
-    </header>
-
-    <main class="pc-grid">
-        <!-- PC 1: X1 Tier A -->
-        <div class="pc-card">
-            <div>
-                <div class="card-header">
