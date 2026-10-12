@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mbyte Pure PC Building</title>
+    <!-- Google Fonts toegevoegd zodat het Inter lettertype overal (ook op GitHub) correct werkt -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #020617;
@@ -44,6 +49,7 @@
             margin: 0 0 8px 0;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
+            background-clip: text; /* Extra fallback voor compatibiliteit */
             -webkit-text-fill-color: transparent;
             letter-spacing: -1.5px;
             text-transform: uppercase;
@@ -63,6 +69,7 @@
             letter-spacing: 1px;
             background: linear-gradient(to right, #fff, var(--text-muted));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             width: 100%;
             max-width: 940px;
@@ -167,186 +174,75 @@
             color: var(--text-main);
         }
 
+        /* De herstelde .action-btn klasse met een modern verloop en glow-effect */
         .action-btn {
             background: var(--gradient-primary);
             color: #020617;
             border: none;
-            padding: 16px;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+            width: 100%;
         }
 
         .action-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 25px rgba(192, 132, 252, 0.4);
-        }
-
-        /* Tiers Dashboard */
-        .tiers-panel {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 35px;
-            max-width: 940px;
-            width: 100%;
-            box-sizing: border-box;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .tier-row {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .tier-badge {
-            font-size: 1.8rem;
-            font-weight: 900;
-            width: 55px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-        }
-
-        .tier-badge.a { background: linear-gradient(135deg, #ef4444, #f97316); color: #fff; }
-        .tier-badge.b { background: linear-gradient(135deg, #3b82f6, #06b6d4); color: #fff; }
-        .tier-badge.c { background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; }
-
-        .tier-info h4 {
-            margin: 0 0 4px 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .tier-info p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Test Betaal Systeem Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
-            background: #0f172a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 440px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-
-        .modal-price {
-            font-size: 1.3rem;
-            color: var(--accent-cyan);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .status-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-
-        .status-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .status-success {
-            color: #22c55e !important;
-            font-weight: 800;
-            line-height: 1.6;
-        }
-
-        .modal-btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .pay-btn {
-            background: var(--gradient-primary);
-            color: #020617;
-            border: none;
-            padding: 16px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .pay-btn:hover {
-            transform: scale(1.02);
-        }
-
-        .close-btn {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 14px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 132, 252, 0.4);
+            filter: brightness(1.1);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Mbyte pure pc Building</h1>
+        <h1>Mbyte Pure PC Building</h1>
+        <div class="subtitle">Custom High-End Gaming & Workstation PC's</div>
+    </header>
+
+    <div class="section-title">Onze Builds</div>
+
+    <main class="pc-grid">
+        <!-- Voorbeeld van een PC kaart -->
+        <div class="pc-card">
+            <div>
+                <div class="card-header">
+                    <h2 class="pc-title">Apex Sentinel</h2>
+                    <span class="pc-price">€ 2.499</span>
+                </div>
+
+                <div class="clips-section">
+                    Verwachte gaming performance: <strong>144+ FPS</strong> op 4K Ultra
+                </div>
+
+                <ul class="specs-list">
+                    <li>
+                        <span class="spec-label">Processor (CPU)</span>
+                        <span class="spec-value">AMD Ryzen 7 7800X3D</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Videokaart (GPU)</span>
+                        <span class="spec-value">NVIDIA GeForce RTX 4080 Super</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Geheugen (RAM)</span>
+                        <span class="spec-value">32GB DDR5 6000MHz CL30</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Opslag (SSD)</span>
+                        <span class="spec-value">2TB NVMe PCIe 4.0 M.2</span>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="action-btn">Configureer Build</button>
+        </div>
+    </main>
+
+</body>
+</html>
